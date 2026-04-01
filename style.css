@@ -23,6 +23,23 @@ body {
   color: white;
   text-decoration: none;
 }
+.home-btn{
+    background: hsl(216, 91%, 60%);
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.dashboard-btn {
+  background: #3b82f6;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.about-btn{
+    background: #3b82f6;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
 
 .login-btn {
   background: #3b82f6;
@@ -157,14 +174,6 @@ body {
 .main {
   margin-left: 220px;
   padding: 20px;
-}
-
-/* CARDS */
-.card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
 }
 
 /* SECTIONS */
@@ -370,22 +379,6 @@ table {
 table, th, td {
   border: 1px solid white;
   padding: 10px;
-}
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #020617;
-}
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #020617;
 }
 
 
