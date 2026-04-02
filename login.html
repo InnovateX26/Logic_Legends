@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login - SmartCare</title>
+  <title>लॉगिन - स्मार्ट केयर</title>
 
   <!-- RESPONSIVE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
       text-align: center;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -60,18 +60,18 @@
 
 <div class="login-box">
 
-  <h2 class="title">💙 SmartCare Login</h2>
+  <h2 class="title">💙 स्मार्ट केयर लॉगिन</h2>
 
-  <input id="name" placeholder="Enter Name">
-  <input id="age" type="number" placeholder="Enter Age">
+  <input id="name" placeholder="अपना नाम लिखें">
+  <input id="age" type="number" placeholder="अपनी उम्र लिखें">
 
   <select id="gender">
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
+    <option>पुरुष</option>
+    <option>महिला</option>
+    <option>अन्य</option>
   </select>
-      <br>           </br>
-  <button onclick="login()">Login</button>
+
+  <button onclick="login()">लॉगिन करें</button>
 
 </div>
 
@@ -84,16 +84,16 @@ function login() {
   let gender = document.getElementById("gender").value;
 
   if (!name || !age) {
-    alert("Please fill all details");
+    alert("कृपया सभी जानकारी भरें");
     return;
   }
 
-  // SAVE DATA
+  // डेटा सेव करें
   localStorage.setItem("userName", name);
   localStorage.setItem("age", age);
   localStorage.setItem("gender", gender);
 
-  // REDIRECT
+  // डैशबोर्ड पर जाएं
   window.location.href = "dashboard.html";
 }
 

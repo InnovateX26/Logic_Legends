@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SmartCare Dashboard</title>
+  <title>स्मार्ट हेल्थकेयर डैशबोर्ड</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
 
     body {
-         margin: 0;
-         font-family: 'Poppins', sans-serif;
-       background: linear-gradient(135deg, #0f172a, #1e3a8a);
-        color: white;
-         }
+      margin: 0;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+    }
 
     /* SIDEBAR */
     .sidebar {
@@ -29,16 +29,11 @@
 
     .sidebar a {
       display: block;
-      margin: 12px 0;
+      margin: 10px 0;
       padding: 10px;
-      border-radius: 8px;
       background: rgba(255,255,255,0.1);
-      color: white;
-      text-decoration: none;
-    }
-
-    .sidebar a:hover {
-      background: #0b5cdd;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     .sidebar button {
@@ -47,8 +42,9 @@
       width: 100%;
       background: red;
       border: none;
-      border-radius: 8px;
       color: white;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     /* MAIN */
@@ -57,54 +53,28 @@
       padding: 20px;
     }
 
-    /* SECTIONS */
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
+    .section { display: none; }
+    .active { display: block; }
 
     /* CARDS */
     .card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 15px;
-  margin: 10px 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-    /* STATS */
-   .stat {
-  flex: 1;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-    /* TABLE */
-    table {
-      width: 100%;
-      margin-top: 10px;
-      border-collapse: collapse;
+      background: #1e293b;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
     }
 
-    th, td {
+    .stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      background: #1e293b;
       padding: 10px;
-      border: 1px solid #555;
-    }
-
-    th {
-      background: #3b82f6;
+      border-radius: 8px;
     }
 
     /* CHATBOT */
@@ -115,12 +85,6 @@
       width: 300px;
       background: #111827;
       border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background: #1e293b;
-      padding: 10px;
     }
 
     .chat-messages {
@@ -153,15 +117,15 @@
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <h2>💙 SmartCare</h2>
+  <h2>💙 स्मार्ट केयर</h2>
 
-  <a href="#" onclick="showSection('home')">🏠 Home</a>
-  <a href="#" onclick="showSection('reports')">📄 Reports</a>
-  <a href="#" onclick="showSection('inventory')">💊 Inventory</a>
-  <a href="#" onclick="showSection('emergency')">🚑 Emergency</a>
-  <a href="#" onclick="showSection('history')">📊 History</a>
+  <a onclick="showSection('home')">🏠 होम</a>
+  <a onclick="showSection('reports')">📄 रिपोर्ट</a>
+  <a onclick="showSection('history')">📊 इतिहास</a>
+  <a onclick="showSection('about')">🎯 हमारे बारे में </a>
 
-  <button onclick="logout()">Logout</button>
+  <!-- LOGOUT BUTTON -->
+  <button onclick="logout()">लॉग आउट</button>
 </div>
 
 <!-- MAIN -->
@@ -170,68 +134,99 @@
   <!-- HOME -->
   <div id="home" class="section active">
 
-    <h1 id="welcome"></h1>
+    <h2 id="welcome"></h2>
 
+    <!-- USER CARD -->
     <div class="card">
-      <h3>👤 Profile</h3>
+      <h3>👤 प्रोफ़ाइल</h3>
       <p id="userInfo"></p>
     </div>
 
-    <!-- STATS -->
+    <!-- HEALTH STATS -->
     <div class="stats">
-      <div class="stat">❤️ Heart Rate: 78 bpm</div>
-      <div class="stat">🩸 Blood Pressure: 120/80</div>
-      <div class="stat">🌡️ Temperature: 98.6°F</div>
+      <div class="stat">❤️ हृदय गति: 78 bpm</div>
+      <div class="stat">🩸 ब्लड प्रेशर: 120/80</div>
+      <div class="stat">🌡️ तापमान: 98.6°F</div>
     </div>
 
     <!-- ACTIVITY -->
     <div class="card">
-      <h3>📌 Recent Activity</h3>
-      <p>✔ Checked symptoms</p>
-      <p>✔ AI diagnosis done</p>
-      <p>✔ No alerts</p>
+      <h3>📌 हाल की गतिविधि</h3>
+      <p>✔ आज लक्षण जांचे गए</p>
+      <p>✔ AI सलाह प्राप्त की</p>
+      <p>✔ कोई आपातकाल नहीं</p>
     </div>
 
   </div>
 
   <!-- REPORTS -->
-  <div id="reports" class="section">
-    <h2>📄 Reports</h2>
+ <div id="reports" class="section">
 
-    <input id="reportInput" placeholder="Enter report name">
-    <button onclick="addReport()">Add</button>
+  <h2>📄 स्वास्थ्य रिपोर्ट</h2>
 
+  <!-- UPLOAD -->
+  <div class="card">
+    <h3>📤 रिपोर्ट अपलोड करें</h3>
+
+    <input type="file" id="fileInput" accept="application/pdf">
+    <button onclick="uploadReport()">अपलोड करें</button>
+  </div>
+
+  <!-- LIST -->
+  <div class="card">
+    <h3>📁 आपकी रिपोर्ट्स</h3>
     <div id="reportList"></div>
   </div>
 
-  <!-- INVENTORY -->
-  <div id="inventory" class="section">
-    <h2>💊 Inventory</h2>
+  <!-- VIEWER -->
+  <div class="card">
+    <h3>📖 रिपोर्ट देखें</h3>
+    <iframe id="pdfViewer" width="100%" height="400px"></iframe>
 
-    <table>
-      <tr><th>Medicine</th><th>Status</th></tr>
-      <tr><td>Paracetamol</td><td>Available</td></tr>
-      <tr><td>Insulin</td><td>Low</td></tr>
-    </table>
+    <br><br>
+    <button onclick="printPDF()">🖨️ प्रिंट करें</button>
   </div>
 
-  <!-- EMERGENCY -->
-  <div id="emergency" class="section">
-    <h2>🚑 Emergency</h2>
-
-    <div class="card">
-      <button onclick="alert('🚑 Ambulance Booked!')">
-        Call Ambulance
-      </button>
-    </div>
-  </div>
-
+</div>
   <!-- HISTORY -->
   <div id="history" class="section">
-    <h2>📊 History</h2>
+    <h2>📊 इतिहास</h2>
 
-    <div class="card">Flu - Recovered</div>
-    <div class="card">Cold - Recovered</div>
+    <div class="card">फ्लू - ठीक हुआ</div>
+    <div class="card">सिर दर्द - सामान्य</div>
+  </div>
+
+</div>
+<!-- ABOUT US -->
+ <div id="about" class="section">
+
+  <h2 style="text-align:center;">ℹ️ हमारे बारे में</h2>
+
+  <div style="max-width:700px; margin:auto;">
+
+    <div class="card">
+      <h3>💙 स्मार्ट हेल्थकेयर क्या है?</h3>
+      <p>
+        स्मार्ट हेल्थकेयर एक AI आधारित प्रणाली है जो उपयोगकर्ता के लक्षणों के आधार पर 
+        संभावित बीमारियों का अनुमान लगाती है और स्वास्थ्य सलाह देती है।
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 यह कैसे काम करता है?</h3>
+      <p>
+        उपयोगकर्ता लक्षण दर्ज करता है → सिस्टम उन्हें डेटाबेस से मिलाता है → 
+        सबसे उपयुक्त परिणाम दिखाता है।
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ महत्वपूर्ण सूचना</h3>
+      <p>
+        यह केवल प्राथमिक सलाह देता है। किसी भी गंभीर स्थिति में डॉक्टर से संपर्क करें।
+      </p>
+    </div>
+
   </div>
 
 </div>
@@ -239,13 +234,15 @@
 <!-- CHATBOT -->
 <div class="chatbot">
 
-  <div class="chat-header">🤖 AI Assistant</div>
+  <div style="padding:10px;">🤖 AI सहायक</div>
 
-  <div id="chatMessages" class="chat-messages"></div>
+  <div id="chatMessages" class="chat-messages">
+    <p style="color:gray;">अपने लक्षण लिखें (जैसे: बुखार, खांसी)</p>
+  </div>
 
   <div class="chat-input">
-    <input id="chatInput" placeholder="Type symptoms...">
-    <button onclick="sendMessage()">Send</button>
+    <input id="chatInput" placeholder="लक्षण लिखें...">
+    <button onclick="sendMessage()">भेजें</button>
   </div>
 
 </div>
@@ -253,20 +250,15 @@
 <script>
 
 // USER DATA
-let name = localStorage.getItem("userName") || "User";
+let name = localStorage.getItem("userName") || "उपयोगकर्ता";
 let age = localStorage.getItem("age") || "-";
 let gender = localStorage.getItem("gender") || "-";
 
-document.getElementById("welcome").innerText = "Welcome " + name;
-document.getElementById("userInfo").innerText =
-  name + " | Age: " + age + " | " + gender;
+document.getElementById("welcome").innerText =
+  "स्वागत है " + name + " 👋";
 
-// SECTION SWITCH
-function showSection(id) {
-  let sections = document.querySelectorAll(".section");
-  sections.forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
+document.getElementById("userInfo").innerText =
+  "नाम: " + name + " | उम्र: " + age + " | लिंग: " + gender;
 
 // LOGOUT
 function logout() {
@@ -274,47 +266,9 @@ function logout() {
   window.location.href = "login.html";
 }
 
-// REPORT SYSTEM
-function addReport() {
-  let val = document.getElementById("reportInput").value;
-  if (!val) return;
-
-  let div = document.createElement("div");
-  div.className = "card";
-  div.innerText = val;
-
-  document.getElementById("reportList").appendChild(div);
-
-  document.getElementById("reportInput").value = "";
-}
-
-// CHATBOT
-function sendMessage() {
-  let input = document.getElementById("chatInput");
-  let chat = document.getElementById("chatMessages");
-
-  let msg = input.value.trim();
-  if (!msg) return;
-
-  chat.innerHTML += "<div style='text-align:right'>" + msg + "</div>";
-
-  input.value = "";
-
-  let reply = "Tell me more about your symptoms.";
-
-  let t = msg.toLowerCase();
-
-  if (t.includes("fever")) reply = "You may have fever. Take rest.";
-  else if (t.includes("cough")) reply = "Possible cold or infection.";
-  else if (t.includes("headache")) reply = "Try resting and drinking water.";
-
-  setTimeout(() => {
-    chat.innerHTML += "<div style='color:lightblue'>" + reply + "</div>";
-    chat.scrollTop = chat.scrollHeight;
-  }, 500);
-}
-
 </script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
